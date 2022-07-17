@@ -35,6 +35,8 @@ return new class extends Migration
             $table->foreignId($columnNames['ability_pivot_key'])->constrained($tableNames['abilities'])->cascadeOnDelete();
             $table->foreignId($columnNames['role_pivot_key'])->constrained($tableNames['roles'])->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique([$columnNames['ability_pivot_key'], $columnNames['role_pivot_key']]);
         });
 
         Schema::create($tableNames['assigned_roles'], function (Blueprint $table)  use ($tableNames, $columnNames) {

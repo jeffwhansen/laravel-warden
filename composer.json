@@ -37,7 +37,10 @@
         "psr-4": {
             "Jeffwhansen\\Warden\\": "src",
             "Jeffwhansen\\Warden\\Database\\Factories\\": "database/factories"
-        }
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -6,6 +6,11 @@ use InvalidArgumentException;
 
 class AbilityDoesNotExist extends InvalidArgumentException
 {
+    public static function named(string $roleName)
+    {
+        return new static("There is no ability named `{$roleName}`.");
+    }
+
     public static function create(string $abilityName, string $guardName = '')
     {
         return new static("There is no ability named `{$abilityName}` for guard `{$guardName}`.");
