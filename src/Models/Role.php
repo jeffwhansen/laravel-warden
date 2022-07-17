@@ -3,12 +3,11 @@
 namespace Jeffwhansen\Warden\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 
 class Role extends Model implements RoleContract
 {
-
     /**
      * A role may be given various permissions.
      */
@@ -21,5 +20,4 @@ class Role extends Model implements RoleContract
             config('warden.column_name.ability_pivot_key'),
         );
     }
-
 }

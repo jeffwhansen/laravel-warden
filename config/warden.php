@@ -3,8 +3,8 @@
 // config for Jeffwhansen/Warden
 return [
     'models' => [
-      'ability' => \Jeffwhansen\Warden\Models\Ability::class,
-      'role' => \Jeffwhansen\Warden\Models\Role::class,
+        'ability' => \Jeffwhansen\Warden\Models\Ability::class,
+        'role' => \Jeffwhansen\Warden\Models\Role::class,
     ],
 
     'table_names' => [
@@ -42,5 +42,5 @@ return [
         'ability_pivot_key' => 'ability_id',
         'assignee_morphs' => 'assignee',
         'roleable_morphs' => 'roleable',
-    ]
+    ],
 ];

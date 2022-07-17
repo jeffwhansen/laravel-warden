@@ -4,8 +4,8 @@ namespace Jeffwhansen\Warden\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-interface Role {
-
+interface Role
+{
     /**
      * A role may be given various permissions.
      *
@@ -16,9 +16,8 @@ interface Role {
     /**
      * Find a role by its name and guard name.
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role
      *
      * @throws \Jeffwhansen\Warden\Exceptions\RoleDoesNotExist
@@ -28,34 +27,28 @@ interface Role {
     /**
      * Find a role by its name and guard name.
      *
-     * @param int $id
-     * @param string|null $guardName
-     *
+     * @param  int  $id
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role
      *
      * @throws \Jeffwhansen\Warden\Exceptions\RoleDoesNotExist
      */
     public static function findById(int $id, $guardName): self;
 
-
     /**
      * Find or create a role by its name and guard name.
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role
      */
     public static function findOrCreate(string $name, $guardName): self;
 
-
     /**
      * Determine if the user may perform the given permission.
      *
-     * @param string|\Jeffwhansen\Warden\Contracts\Ability $ability
-     *
+     * @param  string|\Jeffwhansen\Warden\Contracts\Ability  $ability
      * @return bool
      */
     public function hasPermissionTo($ability): bool;
-
 }

@@ -2,9 +2,9 @@
 
 namespace Jeffwhansen\Warden;
 
+use Jeffwhansen\Warden\Commands\WardenCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Jeffwhansen\Warden\Commands\WardenCommand;
 
 class WardenServiceProvider extends PackageServiceProvider
 {
