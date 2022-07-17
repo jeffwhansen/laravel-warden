@@ -3,7 +3,6 @@
 namespace Jeffwhansen\Warden\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Jeffwhansen\Warden\Exceptions\GuardDoesNotMatch;
 use Jeffwhansen\Warden\Exceptions\RoleAlreadyExists;
