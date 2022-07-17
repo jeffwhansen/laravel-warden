@@ -4,17 +4,13 @@ namespace Jeffwhansen\Warden\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Jeffwhansen\Warden\Contracts\Role as RoleContract;
+use Jeffwhansen\Warden\Contracts\Ability as AbilityContract;
 use Jeffwhansen\Warden\Exceptions\AbilityAlreadyExists;
 use Jeffwhansen\Warden\Exceptions\AbilityDoesNotExist;
-use Jeffwhansen\Warden\Exceptions\RoleAlreadyExists;
-use Jeffwhansen\Warden\Contracts\Ability as AbilityContract;
-use Jeffwhansen\Warden\Exceptions\RoleDoesNotExist;
 use Jeffwhansen\Warden\Guard;
 
 class Ability extends Model implements AbilityContract
 {
-
     protected $guarded = [];
 
     public function __construct(array $attributes = [])
@@ -54,13 +50,11 @@ class Ability extends Model implements AbilityContract
         return static::query()->create($attributes);
     }
 
-
     /**
      * Find or create ability by its name (and optionally guardName).
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Models\Ability
      */
     public static function findOrCreate(string $name, $guardName = null): AbilityContract
@@ -79,9 +73,8 @@ class Ability extends Model implements AbilityContract
     /**
      * Find a role by its name and guard name.
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Models\Ability
      *
      * @throws \Jeffwhansen\Warden\Exceptions\AbilityDoesNotExist
@@ -102,9 +95,8 @@ class Ability extends Model implements AbilityContract
     /**
      * Find a ability by its id (and optionally guardName).
      *
-     * @param int $id
-     * @param string|null $guardName
-     *
+     * @param  int  $id
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Models\Ability
      */
     public static function findById(int $id, $guardName = null): AbilityContract
@@ -130,6 +122,4 @@ class Ability extends Model implements AbilityContract
 
         return $query->first();
     }
-
-
 }

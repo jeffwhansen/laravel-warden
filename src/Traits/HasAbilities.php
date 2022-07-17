@@ -6,9 +6,8 @@ use Illuminate\Support\Collection;
 use Jeffwhansen\Warden\Guard;
 use Jeffwhansen\Warden\WardenRegistrar;
 
-trait HasAbilities {
-
-
+trait HasAbilities
+{
     public function getAbilityClass()
     {
         if (! isset($this->abilityClass)) {
@@ -17,7 +16,6 @@ trait HasAbilities {
 
         return $this->abilityClass;
     }
-
 
     protected function getGuardNames(): Collection
     {
@@ -28,5 +26,4 @@ trait HasAbilities {
     {
         return Guard::getDefaultName($this);
     }
-
 }

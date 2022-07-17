@@ -4,7 +4,6 @@ namespace Jeffwhansen\Warden;
 
 class WardenRegistrar
 {
-
     /** @var string */
     protected $abilityClass;
 
@@ -25,7 +24,6 @@ class WardenRegistrar
 
     /**
      * WardenRegistrar constructor.
-     *
      */
     public function __construct()
     {
@@ -39,5 +37,4 @@ class WardenRegistrar
     {
         return app($this->abilityClass);
     }
-
 }

@@ -51,5 +51,4 @@ interface Role
      * @return bool
      */
     public function hasAbilityTo($ability): bool;
-
 }

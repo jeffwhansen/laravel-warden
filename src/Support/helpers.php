@@ -2,8 +2,7 @@
 
 if (! function_exists('getModelForGuard')) {
     /**
-     * @param string $guard
-     *
+     * @param  string  $guard
      * @return string|null
      */
     function getModelForGuard(string $guard)

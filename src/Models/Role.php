@@ -12,7 +12,6 @@ use Jeffwhansen\Warden\Traits\HasAbilities;
 
 class Role extends Model implements RoleContract
 {
-
     use HasAbilities;
 
     protected $guarded = [];
@@ -54,13 +53,11 @@ class Role extends Model implements RoleContract
         return static::query()->create($attributes);
     }
 
-
     /**
      * Find or create role by its name (and optionally guardName).
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role|\Jeffwhansen\Warden\Models\Role
      */
     public static function findOrCreate(string $name, $guardName = null): RoleContract
@@ -104,13 +101,11 @@ class Role extends Model implements RoleContract
         );
     }
 
-
     /**
      * Find a role by its name and guard name.
      *
-     * @param string $name
-     * @param string|null $guardName
-     *
+     * @param  string  $name
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role|\Jeffwhansen\Warden\Models\Role
      *
      * @throws \Jeffwhansen\Warden\Exceptions\RoleDoesNotExist
@@ -131,9 +126,8 @@ class Role extends Model implements RoleContract
     /**
      * Find a role by its id (and optionally guardName).
      *
-     * @param int $id
-     * @param string|null $guardName
-     *
+     * @param  int  $id
+     * @param  string|null  $guardName
      * @return \Jeffwhansen\Warden\Contracts\Role|\Jeffwhansen\Warden\Models\Role
      */
     public static function findById(int $id, $guardName = null): RoleContract
@@ -160,19 +154,16 @@ class Role extends Model implements RoleContract
         return $query->first();
     }
 
-
     /**
      * Determine if the user may perform the given ability.
      *
-     * @param string|Ability $ability
-     *
+     * @param  string|Ability  $ability
      * @return bool
      *
      * @throws \Jeffwhansen\Warden\Exceptions\GuardDoesNotMatch
      */
     public function hasAbilityTo($ability): bool
     {
-
         $abilityClass = $this->getAbilityClass();
 
         if (is_string($ability)) {
@@ -189,5 +180,4 @@ class Role extends Model implements RoleContract
 
         return $this->abilities->contains($ability->getKeyName(), $ability->getKey());
     }
-
 }
