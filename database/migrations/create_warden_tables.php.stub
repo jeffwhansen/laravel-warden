@@ -1,0 +1,66 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+
+        $tableNames = config('warden.table_names');
+        $columnNames = config('warden.column_names');
+
+        Schema::create($tableNames['roles'], function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('guard_name');
+            $table->timestamps();
+
+            $table->unique(['name', 'guard_name']);
+        });
+
+        Schema::create($tableNames['abilities'], function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('guard_name');
+            $table->timestamps();
+
+            $table->unique(['name', 'guard_name']);
+        });
+
+        Schema::create($tableNames['ability_role'], function (Blueprint $table) use ($tableNames, $columnNames) {
+            $table->id();
+            $table->foreignId($columnNames['ability_pivot_key'])->constrained($tableNames['abilities'])->cascadeOnDelete();
+            $table->foreignId($columnNames['role_pivot_key'])->constrained($tableNames['roles'])->cascadeOnDelete();
+            $table->timestamps();
+        });
+
+        Schema::create($tableNames['assigned_roles'], function (Blueprint $table)  use ($tableNames, $columnNames) {
+            $table->id();
+            $table->foreignId($columnNames['role_pivot_key'])->constrained($tableNames['roles'])->cascadeOnDelete();
+            $table->morphs($columnNames['assignee_morphs']);
+            $table->morphs($columnNames['roleable_morphs']);
+            $table->timestamps();
+
+            $table->unique([
+                $columnNames['role_pivot_key'],
+                $columnNames['assignee_morphs'].'_id',
+                $columnNames['assignee_morphs'].'_type',
+                $columnNames['roleable_morphs'].'_id',
+                $columnNames['roleable_morphs'].'_type',
+            ], 'assigned_roles_index');
+        });
+    }
+
+    public function down() {
+        $tableNames = config('warden.table_names');
+
+        Schema::drop($tableNames['assigned_roles']);
+        Schema::drop($tableNames['ability_model']);
+        Schema::drop($tableNames['ability_role']);
+        Schema::drop($tableNames['abilities']);
+        Schema::drop($tableNames['roles']);
+    }
+};
