@@ -90,6 +90,20 @@ trait HasRoles
         return $this;
     }
 
+    /**
+     * Revoke the given role from the model.
+     *
+     * @param  string|int|\Jeffwhansen\Warden\Contracts\Role  $role
+     */
+    public function removeRole($role)
+    {
+        $this->roles()->detach($this->getStoredRole($role));
+
+        $this->load('roles');
+
+        return $this;
+    }
+
     protected function getStoredRole($role): Role
     {
         $roleClass = $this->getRoleClass();

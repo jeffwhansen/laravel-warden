@@ -77,6 +77,12 @@ An ability can be assigned to a role using 1 of the following methods:
 $role->giveAbilityTo($ability);
 $ability->assignRole($role);
 ```
+An ability can be removed/revoked from a role using 1 of the following methods:
+
+```php
+$role->revokeAbilityTo($ability);
+$ability->removeRole($role);
+```
 
 ## Testing
 

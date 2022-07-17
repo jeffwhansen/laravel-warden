@@ -79,6 +79,21 @@ trait HasAbilities
     }
 
     /**
+     * Revoke the given ability(s).
+     *
+     * @param  \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Ability[]|string|string[]  $ability
+     * @return $this
+     */
+    public function revokeAbilityTo($ability)
+    {
+        $this->abilities()->detach($this->getStoredAbility($ability));
+
+        $this->load('abilities');
+
+        return $this;
+    }
+
+    /**
      * @param  string|int|array|\Jeffwhansen\Warden\Contracts\Ability|\Illuminate\Support\Collection  $abilities
      * @return \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Ability[]|\Illuminate\Support\Collection
      */
@@ -109,14 +124,14 @@ trait HasAbilities
     }
 
     /**
-     * @param  \Spatie\Permission\Contracts\Ability|\Spatie\Permission\Contracts\Role  $roleOrPermission
+     * @param  \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Role  $roleOrAbility
      *
-     * @throws \Spatie\Permission\Exceptions\GuardDoesNotMatch
+     * @throws \Jeffwhansen\Warden\Exceptions\GuardDoesNotMatch
      */
-    protected function ensureModelSharesGuard($roleOrPermission)
+    protected function ensureModelSharesGuard($roleOrAbility)
     {
-        if (! $this->getGuardNames()->contains($roleOrPermission->guard_name)) {
-            throw GuardDoesNotMatch::create($roleOrPermission->guard_name, $this->getGuardNames());
+        if (! $this->getGuardNames()->contains($roleOrAbility->guard_name)) {
+            throw GuardDoesNotMatch::create($roleOrAbility->guard_name, $this->getGuardNames());
         }
     }
 }
