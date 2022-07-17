@@ -4,12 +4,12 @@ namespace Jeffwhansen\Warden\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 use Jeffwhansen\Warden\Exceptions\GuardDoesNotMatch;
 use Jeffwhansen\Warden\Exceptions\RoleAlreadyExists;
 use Jeffwhansen\Warden\Exceptions\RoleDoesNotExist;
 use Jeffwhansen\Warden\Guard;
 use Jeffwhansen\Warden\Traits\HasAbilities;
-use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 
 class Role extends Model implements RoleContract
 {

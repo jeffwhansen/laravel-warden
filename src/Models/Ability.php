@@ -12,7 +12,6 @@ use Jeffwhansen\Warden\Traits\HasRoles;
 
 class Ability extends Model implements AbilityContract
 {
-
     use HasRoles;
 
     protected $guarded = [];

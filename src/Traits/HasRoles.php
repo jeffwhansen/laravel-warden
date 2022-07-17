@@ -11,7 +11,6 @@ use Jeffwhansen\Warden\WardenRegistrar;
 
 trait HasRoles
 {
-
     use HasAbilities;
 
     public function getRoleClass()
@@ -47,12 +46,10 @@ trait HasRoles
         return Guard::getDefaultName($this);
     }
 
-
     /**
      * Assign the given role to the model.
      *
-     * @param array|string|int|\Jeffwhansen\Warden\Contracts\Role|\Illuminate\Support\Collection ...$roles
-     *
+     * @param  array|string|int|\Jeffwhansen\Warden\Contracts\Role|\Illuminate\Support\Collection  ...$roles
      * @return $this
      */
     public function assignRole(...$roles)
@@ -67,6 +64,7 @@ trait HasRoles
                 $role = $this->getStoredRole($role);
                 $this->ensureModelSharesGuard($role);
                 $array[$role->getKey()] = [];
+
                 return $array;
             }, []);
 
@@ -88,9 +86,9 @@ trait HasRoles
                 }
             );
         }
+
         return $this;
     }
-
 
     protected function getStoredRole($role): Role
     {
@@ -107,9 +105,8 @@ trait HasRoles
         return $role;
     }
 
-
     /**
-     * @param \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Role $roleOrPermission
+     * @param  \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Role  $roleOrPermission
      *
      * @throws \Jeffwhansen\Warden\Exceptions\GuardDoesNotMatch
      */
@@ -119,5 +116,4 @@ trait HasRoles
             throw GuardDoesNotMatch::create($roleOrPermission->guard_name, $this->getGuardNames());
         }
     }
-
 }

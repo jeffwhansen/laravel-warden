@@ -29,12 +29,10 @@ trait HasAbilities
         return Guard::getDefaultName($this);
     }
 
-
     /**
      * Grant the given ability(s) to a role.
      *
-     * @param string|int|array|\Jeffwhansen\Warden\Contracts\Ability|\Illuminate\Support\Collection $abilities
-     *
+     * @param  string|int|array|\Jeffwhansen\Warden\Contracts\Ability|\Illuminate\Support\Collection  $abilities
      * @return $this
      */
     public function giveAbilityTo(...$abilities)
@@ -80,10 +78,8 @@ trait HasAbilities
         return $this;
     }
 
-
     /**
-     * @param string|int|array|\Jeffwhansen\Warden\Contracts\Ability|\Illuminate\Support\Collection $abilities
-     *
+     * @param  string|int|array|\Jeffwhansen\Warden\Contracts\Ability|\Illuminate\Support\Collection  $abilities
      * @return \Jeffwhansen\Warden\Contracts\Ability|\Jeffwhansen\Warden\Contracts\Ability[]|\Illuminate\Support\Collection
      */
     protected function getStoredAbility($abilities)
@@ -113,7 +109,7 @@ trait HasAbilities
     }
 
     /**
-     * @param \Spatie\Permission\Contracts\Ability|\Spatie\Permission\Contracts\Role $roleOrPermission
+     * @param  \Spatie\Permission\Contracts\Ability|\Spatie\Permission\Contracts\Role  $roleOrPermission
      *
      * @throws \Spatie\Permission\Exceptions\GuardDoesNotMatch
      */
