@@ -8,9 +8,13 @@ use Jeffwhansen\Warden\Contracts\Ability as AbilityContract;
 use Jeffwhansen\Warden\Exceptions\AbilityAlreadyExists;
 use Jeffwhansen\Warden\Exceptions\AbilityDoesNotExist;
 use Jeffwhansen\Warden\Guard;
+use Jeffwhansen\Warden\Traits\HasRoles;
 
 class Ability extends Model implements AbilityContract
 {
+
+    use HasRoles;
+
     protected $guarded = [];
 
     public function __construct(array $attributes = [])

@@ -37,4 +37,9 @@ class WardenRegistrar
     {
         return app($this->abilityClass);
     }
+
+    public function getRoleClass()
+    {
+        return app($this->roleClass);
+    }
 }

@@ -54,9 +54,28 @@ php artisan vendor:publish --tag="laravel-warden-views"
 
 ## Usage
 
+### Creating roles and abilities
 ```php
-$warden = new Jeffwhansen\Warden();
-echo $warden->echoPhrase('Hello, Jeffwhansen!');
+use Jeffwhansen\Warden\Models\Role;
+use Jeffwhansen\Warden\Models\Ability;
+
+$role = Role::create(['name' => 'admin']);
+$ability = Ability::create(['name' => 'create users']);
+
+-- OR --
+
+$r = new Role();
+$role = $r->create(['name' => 'guest']);
+
+$a = new Ability();
+$ability = $a->create(['name' => 'view posts']);
+
+```
+An ability can be assigned to a role using 1 of the following methods:
+
+```php
+$role->giveAbilityTo($ability);
+$ability->assignRole($role);
 ```
 
 ## Testing

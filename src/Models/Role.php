@@ -9,6 +9,7 @@ use Jeffwhansen\Warden\Exceptions\RoleAlreadyExists;
 use Jeffwhansen\Warden\Exceptions\RoleDoesNotExist;
 use Jeffwhansen\Warden\Guard;
 use Jeffwhansen\Warden\Traits\HasAbilities;
+use Jeffwhansen\Warden\Contracts\Role as RoleContract;
 
 class Role extends Model implements RoleContract
 {
