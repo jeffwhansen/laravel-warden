@@ -15,7 +15,14 @@ class Role extends Model implements RoleContract
 {
     use HasAbilities;
 
+
     protected $guarded = [];
+
+    public function getRoleableAttribute()
+    {
+
+    }
+
 
     public function __construct(array $attributes = [])
     {
