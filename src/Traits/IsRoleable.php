@@ -8,5 +8,4 @@ namespace Jeffwhansen\Warden\Traits;
 
 trait IsRoleable
 {
-
 }
